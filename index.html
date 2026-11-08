@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b14">
+<title>HUGO ÑOSS MEGASOUND</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<style>
+:root{--bg:#090b14;--panel:#121728;--panel2:#0e1422;--line:#26334c;--txt:#f3f6ff;--muted:#9ba8c2;--cyan:#31d7ff;--pink:#d65cff;--green:#57e6a4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172548 0,transparent 40%),radial-gradient(ellipse at 90% 10%,#321747 0,transparent 34%),var(--bg);color:var(--txt);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-bottom:1px solid #26334c;background:#090b14cc;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--pink));color:#080b14;font-size:23px;font-weight:900;box-shadow:0 0 25px #31d7ff55}.brand h1{font-size:17px;letter-spacing:1.4px;margin:0}.brand small{color:var(--muted);letter-spacing:2px}
+header .tag{font-size:12px;color:var(--green);border:1px solid #2c765d;padding:7px 10px;border-radius:99px}
+main{max-width:1200px;margin:auto;padding:22px;display:grid;gap:18px}.hero{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.hero h2{margin:0;font-size:clamp(22px,4vw,32px)}.hero p{margin:5px 0 0;color:var(--muted)}
+button,.filebtn{border:1px solid var(--line);background:#1a2540;color:var(--txt);padding:10px 14px;border-radius:11px;font-weight:650;cursor:pointer}button:hover,.filebtn:hover{border-color:var(--cyan);filter:brightness(1.12)}button.primary{background:linear-gradient(100deg,#087e9c,#7137a6);border:0}button:disabled{opacity:.4;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:linear-gradient(160deg,#151e32ee,#0e1422f2);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 12px 36px #0004}.panel h3{margin:0 0 12px;font-size:16px;letter-spacing:.7px}.deckhead{display:flex;justify-content:space-between;align-items:center}.deckletter{font-size:12px;color:var(--cyan);letter-spacing:2px}
+.track{height:64px;border-radius:12px;background:#090f1d;border:1px solid #26334c;display:flex;align-items:center;padding:10px 13px;gap:12px;margin:12px 0}.disc{width:40px;height:40px;border-radius:50%;background:repeating-radial-gradient(circle,#101827 0 3px,#28334a 4px 5px);border:2px solid #60708d;display:grid;place-items:center;color:var(--cyan)}.trackinfo{min-width:0}.trackinfo b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.trackinfo small{color:var(--muted)}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.play{width:48px;height:44px;font-size:18px;background:linear-gradient(135deg,#087e9c,#7137a6);border:0}
+input[type=range]{accent-color:var(--cyan);width:100%}.range-row{display:grid;grid-template-columns:70px 1fr 42px;gap:10px;align-items:center;margin:10px 0;color:var(--muted);font-size:13px}.range-row input{min-width:0}
+.time{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:4px}
+.mixer{display:grid;grid-template-columns:1fr 1fr;gap:18px}.crossbox{display:grid;grid-template-columns:1fr minmax(150px,2fr) 1fr;gap:12px;align-items:center}.crossbox label{font-size:12px;color:var(--muted)}
+.eq{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;align-items:end;height:150px;padding:10px 4px}.band{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px}.band input{writing-mode:vertical-lr;direction:rtl;height:105px;width:22px;accent-color:var(--pink)}.band small{font-size:10px;color:var(--muted)}
+.presetrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.presetrow button{font-size:12px;padding:7px 10px}
+.bottomgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.list{display:grid;gap:8px;max-height:220px;overflow:auto}.song{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 11px;background:#0a1020;border:1px solid #202d45;border-radius:10px}.song span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.song small{color:var(--muted)}
+input[type=text],input[type=url]{width:100%;background:#090f1d;color:var(--txt);border:1px solid var(--line);padding:11px;border-radius:10px;min-width:0}
+.inline{display:flex;gap:8px}.inline>*{min-width:0}.note{font-size:12px;color:var(--muted);line-height:1.5}.status{color:var(--green);font-size:12px;min-height:18px}
+footer{text-align:center;color:#71809c;font-size:12px;padding:8px 20px 28px}
+@media(max-width:780px){main{padding:14px}.grid,.mixer,.bottomgrid{grid-template-columns:1fr}.crossbox{grid-template-columns:42px 1fr 42px}.panel{padding:14px}.eq{gap:3px}.band small{font-size:9px}header{padding:12px 14px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">♫</div><div><h1>HUGO ÑOSS MEGASOUND</h1><small>DJ • MUSIC • SOUND</small></div></div><span class="tag">● LISTO PARA MEZCLAR</span></header>
+<main>
+<section class="hero"><div><h2>Tu música. Tu mezcla. Tu sonido.</h2><p>Reproductor local y mesa DJ en una sola aplicación.</p></div><label class="filebtn">＋ Añadir canciones<input id="files" type="file" accept="audio/*" multiple hidden></label></section>
+<section class="grid">
+  <article class="panel" id="deckPanelA">
+    <div class="deckhead"><h3>PLATINA A</h3><span class="deckletter">DECK 01</span></div>
+    <div class="track"><div class="disc">A</div><div class="trackinfo"><b id="nameA">Ninguna canción cargada</b><small id="artistA">Añade archivos MP3 o audio</small></div></div>
+    <audio id="audioA" preload="metadata" crossorigin="anonymous"></audio>
+    <div class="controls"><button class="play" id="playA">▶</button><button id="backA">−10 s</button><button id="forwardA">+10 s</button><label class="filebtn">Cargar A<input id="fileA" type="file" accept="audio/*" hidden></label></div>
+    <div class="range-row"><span>Progreso</span><input id="seekA" type="range" min="0" max="1000" value="0"><span id="voltimeA">0:00</span></div><div class="time"><span id="elapsedA">0:00</span><span id="durationA">0:00</span></div>
+    <div class="range-row"><span>Volumen</span><input id="volumeA" type="range" min="0" max="1" step=".01" value=".85"><span id="volA">85%</span></div>
+  </article>
+  <article class="panel" id="deckPanelB">
+    <div class="deckhead"><h3>PLATINA B</h3><span class="deckletter" style="color:var(--pink)">DECK 02</span></div>
+    <div class="track"><div class="disc" style="color:var(--pink)">B</div><div class="trackinfo"><b id="nameB">Ninguna canción cargada</b><small id="artistB">Prepara la siguiente canción</small></div></div>
+    <audio id="audioB" preload="metadata" crossorigin="anonymous"></audio>
+    <div class="controls"><button class="play" id="playB">▶</button><button id="backB">−10 s</button><button id="forwardB">+10 s</button><label class="filebtn">Cargar B<input id="fileB" type="file" accept="audio/*" hidden></label></div>
+    <div class="range-row"><span>Progreso</span><input id="seekB" type="range" min="0" max="1000" value="0"><span id="voltimeB">0:00</span></div><div class="time"><span id="elapsedB">0:00</span><span id="durationB">0:00</span></div>
+    <div class="range-row"><span>Volumen</span><input id="volumeB" type="range" min="0" max="1" step=".01" value=".85"><span id="volB">85%</span></div>
+  </article>
+</section>
+<section class="panel"><h3>MEZCLADOR DJ</h3><div class="crossbox"><label>PLATINA A</label><input id="crossfade" type="range" min="0" max="100" value="50"><label style="text-align:right">PLATINA B</label></div><div class="time"><span>Solo A</span><span>Fundido cruzado A ⇄ B</span><span>Solo B</span></div><p class="note">Mueve el control para pasar el sonido de una platina a la otra. El fundido se aplica a los archivos de audio cargados en la aplicación.</p></section>
+<section class="panel"><div class="deckhead"><h3>ECUALIZADOR DE 10 BANDAS</h3><button id="flat">Restablecer</button></div><div class="eq" id="eq"></div><div class="presetrow"><button data-preset="flat">Normal</button><button data-preset="bass">Graves +</button><button data-preset="dance">Dance</button><button data-preset="rock">Rock</button><button data-preset="voice">Voz</button></div><p class="note">El ecualizador modifica el sonido de las dos platinas cuando el navegador permite procesar el audio.</p></section>
+<section class="bottomgrid">
+ <article class="panel"><h3>MI BIBLIOTECA</h3><div class="controls" style="margin-bottom:10px"><label class="filebtn">＋ Añadir archivos<input id="files2" type="file" accept="audio/*" multiple hidden></label><span class="note">Selecciona canciones guardadas en tu móvil.</span></div><div id="playlist" class="list"><p class="note">Tu lista aparecerá aquí cuando añadas música.</p></div></article>
+ <article class="panel"><h3>RADIO / ENLACE DE AUDIO</h3><div class="inline"><input id="streamUrl" type="url" placeholder="Pega aquí un enlace directo de radio"><button id="loadStream">Abrir</button></div><p class="note">Admite enlaces directos de audio o streaming compatibles con el navegador. No todos los enlaces de emisoras permiten reproducción externa.</p><div class="status" id="streamStatus"></div><hr style="border-color:var(--line);margin:16px 0"><h3>SPOTIFY Y YOUTUBE</h3><p class="note">Puedes abrir enlaces oficiales desde aquí. Su reproducción externa está sujeta a las condiciones de cada servicio; no se mezclan dentro de las platinas.</p><div class="inline"><input id="serviceUrl" type="url" placeholder="Pega enlace de Spotify o YouTube"><button id="openService">Abrir enlace</button></div><div class="status" id="serviceStatus"></div></article>
+</section>
+<section class="panel"><h3>IDENTIDAD HUGO ÑOSS</h3><p class="note">Aquí podremos colocar el pato original a color con sus auriculares, manteniendo el diseño que elegiste. Cuando tengas la imagen original, podrás seleccionarla aquí.</p><label class="filebtn">＋ Cargar logo original<input id="logoFile" type="file" accept="image/*" hidden></label><div id="logoPreview" style="margin-top:12px"></div></section>
+</main>
+<footer>HUGO ÑOSS MEGASOUND · Primera versión de trabajo · Diseñada para móvil y ordenador</footer>
+<script>
+const $=id=>document.getElementById(id);
+const decks={A:{audio:$('audioA'),gain:null,filters:[],source:null,url:null},B:{audio:$('audioB'),gain:null,filters:[],source:null,url:null}};
+let audioCtx=null, library=[];
+function fmt(s){if(!Number.isFinite(s))return'0:00';let m=Math.floor(s/60),r=Math.floor(s%60);return m+':'+String(r).padStart(2,'0')}
+function initAudio(){
+ if(audioCtx)return;
+ const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
+ audioCtx=new C();
+ for(const k of ['A','B']){
+  const d=decks[k],a=d.audio;
+  try{d.source=audioCtx.createMediaElementSource(a);d.gain=audioCtx.createGain();let prev=d.source;
+   [31,62,125,250,500,1000,2000,4000,8000,16000].forEach((f,i)=>{let bi=audioCtx.createBiquadFilter();bi.type='peaking';bi.frequency.value=f;bi.Q.value=1;bi.gain.value=0;d.filters.push(bi);prev.connect(bi);prev=bi});
+   prev.connect(d.gain);d.gain.connect(audioCtx.destination);
+  }catch(e){console.warn(e)}
+ }
+ updateCross();
+}
+function updateCross(){if(!audioCtx)return;let x=+$('crossfade').value/100;for(const k of ['A','B']){let g=decks[k].gain;if(g)g.gain.setTargetAtTime(k==='A'?Math.cos(x*Math.PI/2):Math.sin(x*Math.PI/2),audioCtx.currentTime,.025)}}
+function setTrack(k,file){let d=decks[k];if(d.url)URL.revokeObjectURL(d.url);d.url=URL.createObjectURL(file);d.audio.src=d.url;$('name'+k).textContent=file.name;$('artist'+k).textContent='Archivo local · listo para reproducir';d.audio.load();initAudio();if(audioCtx?.state==='suspended')audioCtx.resume()}
+function loadOne(k,file){if(!file)return;setTrack(k,file);addToLibrary(file)}
+function addToLibrary(file){let url=URL.createObjectURL(file);library.push({file,url});renderLibrary()}
+function renderLibrary(){let box=$('playlist');box.innerHTML='';if(!library.length){box.innerHTML='<p class="note">Tu lista aparecerá aquí cuando añadas música.</p>';return}library.forEach((item,i)=>{let row=document.createElement('div');row.className='song';let name=document.createElement('span');name.textContent=item.file.name;let actions=document.createElement('div');actions.className='controls';['A','B'].forEach(k=>{let b=document.createElement('button');b.textContent='A'===k?'Cargar A':'Cargar B';b.onclick=()=>setTrack(k,item.file);actions.append(b)});row.append(name,actions);box.append(row)})}
+for(const k of ['A','B']){
+ const a=decks[k].audio;
+ $('file'+k).addEventListener('change',e=>loadOne(k,e.target.files[0]));
+ $('play'+k).onclick=async()=>{if(!a.src){alert('Primero carga una canción en la platina '+k+'.');return}initAudio();if(audioCtx?.state==='suspended')await audioCtx.resume();if(a.paused){await a.play();$('play'+k).textContent='Ⅱ'}else{a.pause();$('play'+k).textContent='▶'}};
+ $('back'+k).onclick=()=>a.currentTime=Math.max(0,a.currentTime-10);$('forward'+k).onclick=()=>a.currentTime=Math.min(a.duration||0,a.currentTime+10);
+ $('volume'+k).oninput=e=>{$('vol'+k).textContent=Math.round(e.target.value*100)+'%';a.volume=+e.target.value};
+ $('seek'+k).oninput=e=>{if(a.duration)a.currentTime=(+e.target.value/1000)*a.duration};
+ a.addEventListener('timeupdate',()=>{let p=a.duration?a.currentTime/a.duration*1000:0;$('seek'+k).value=p;$('elapsed'+k).textContent=fmt(a.currentTime);$('voltime'+k).textContent=fmt(a.currentTime)});
+ a.addEventListener('loadedmetadata',()=> $('duration'+k).textContent=fmt(a.duration));
+ a.addEventListener('ended',()=> $('play'+k).textContent='▶');
+}
+function addFiles(files){[...files].forEach(addToLibrary)}
+$('files').onchange=e=>addFiles(e.target.files);$('files2').onchange=e=>addFiles(e.target.files);
+$('crossfade').oninput=()=>{initAudio();updateCross()};
+const freqs=['31','62','125','250','500','1k','2k','4k','8k','16k'];const eq=$('eq');
+freqs.forEach((f,i)=>{let b=document.createElement('div');b.className='band';let r=document.createElement('input');r.type='range';r.min=-12;r.max=12;r.value=0;r.step=1;r.title=f+' Hz';r.oninput=()=>{initAudio();for(const k of ['A','B'])if(decks[k].filters[i])decks[k].filters[i].gain.value=+r.value};let s=document.createElement('small');s.textContent=f;b.append(r,s);eq.append(b)});
+const presets={flat:[0,0,0,0,0,0,0,0,0,0],bass:[6,6,5,3,1,0,0,0,0,0],dance:[5,4,2,0,-1,2,4,5,5,4],rock:[4,3,1,-1,-2,1,3,4,4,3],voice:[-3,-2,-1,2,4,4,3,1,0,-1]};
+function applyPreset(p){let vals=presets[p]||presets.flat;[...eq.querySelectorAll('input')].forEach((r,i)=>{r.value=vals[i];r.dispatchEvent(new Event('input'))})}
+document.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>applyPreset(b.dataset.preset));$('flat').onclick=()=>applyPreset('flat');
+$('loadStream').onclick=()=>{let u=$('streamUrl').value.trim();if(!u)return;$('audioA').src=u;$('nameA').textContent='Radio / streaming';$('artistA').textContent=u;initAudio();$('streamStatus').textContent='Enlace cargado en la platina A. Pulsa reproducir.'};
+$('openService').onclick=()=>{let u=$('serviceUrl').value.trim();if(!u)return;try{let url=new URL(u);if(!['https:','http:'].includes(url.protocol))throw 0;window.open(url.href,'_blank','noopener');$('serviceStatus').textContent='Enlace abierto en otra pestaña.'}catch(e){$('serviceStatus').textContent='Introduce un enlace web válido.'}};
+$('logoFile').onchange=e=>{let f=e.target.files[0];if(!f)return;let u=URL.createObjectURL(f);$('logoPreview').innerHTML='';let img=document.createElement('img');img.src=u;img.alt='Logo original';img.style.maxWidth='180px';img.style.maxHeight='150px';img.style.objectFit='contain';$('logoPreview').append(img)};
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>

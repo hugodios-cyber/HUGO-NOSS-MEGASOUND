@@ -1,0 +1,19 @@
+HUGO ÑOSS MEGASOUND — primera versión
+
+PUBLICAR EN NETLIFY
+1. Descomprime este ZIP si Netlify no acepta ZIP directamente.
+2. En Netlify, usa el cuadro “Drop project folder / ZIP / HTML file to deploy instantly”.
+3. Sube la carpeta del proyecto o el archivo ZIP.
+4. Espera a que termine la publicación y abre la URL generada.
+
+USO
+- Añade archivos de audio desde el botón “Añadir canciones”.
+- Carga una canción en cada platina A/B.
+- Usa el control central para el fundido cruzado.
+- Ajusta el ecualizador y sus preajustes.
+- Los enlaces de Spotify/YouTube se abren fuera de la app; no se integran en las platinas.
+
+NOTAS
+- Esta es una primera versión web. La reproducción y mezcla de archivos locales depende del navegador.
+- Las emisoras necesitan enlaces directos de audio compatibles.
+- Para incorporar el pato original a color con auriculares, selecciona la imagen original en “Cargar logo original” o compártela para integrarla en una siguiente versión.
